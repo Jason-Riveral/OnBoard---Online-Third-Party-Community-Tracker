@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Dashboard - OnBoard</title>
+    <link rel="stylesheet" href="/StyleSheets/UserDashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="logo-section">
+                <div class="logo">
+                    <img src="/Images/Logo.png" alt="OnBoard Logo">
+                    <span class="logo-text">OnBoard</span>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-item active" onclick="switchTab('home')">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-text">Home</span>
+                </div>
+                <div class="nav-item" onclick="switchTab('profile')">
+                    <span class="nav-icon">👤</span>
+                    <span class="nav-text">My Profile</span>
+                </div>
+                <div class="nav-item" onclick="switchTab('attendance')">
+                    <span class="nav-icon">✓</span>
+                    <span class="nav-text">My Attendance</span>
+                </div>
+                <div class="nav-item" onclick="switchTab('performance')">
+                    <span class="nav-icon">📈</span>
+                    <span class="nav-text">Performance</span>
+                </div>
+                <div class="nav-item" onclick="switchTab('documents')">
+                    <span class="nav-icon">📄</span>
+                    <span class="nav-text">Documents</span>
+                </div>
+                <div class="nav-item" onclick="switchTab('feedback')">
+                    <span class="nav-icon">💬</span>
+                    <span class="nav-text">Feedback</span>
+                </div>
+                <div class="nav-item" onclick="switchTab('settings')">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">Settings</span>
+                </div>
+            </nav>
+
+            <div class="user-profile">
+                <div class="user-avatar" id="sidebarAvatar">...</div>
+                <div class="user-info">
+                    <div class="user-name" id="sidebarUserName">Loading...</div>
+                    <div class="user-role" id="sidebarUserRole">Member</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <div class="top-bar-left">
+                    <span class="menu-toggle" onclick="toggleSidebar()">☰</span>
+                    <h1 class="page-title" id="pageTitle">Home</h1>
+                </div>
+                <div class="top-bar-right">
+                    <div class="notifications">
+                        🔔
+                        <span class="notification-badge" id="notificationCount">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Home Tab -->
+                <div class="tab-content active" id="home">
+                    <!-- Welcome Banner -->
+                    <div class="welcome-banner">
+                        <div class="welcome-content">
+                            <div class="welcome-text">
+                                <h2 id="welcomeMessage">Welcome back! 👋</h2>
+                                <p>Here's your community activity overview</p>
+                            </div>
+                            <div class="welcome-emoji">🌟</div>
+                        </div>
+                    </div>
+
+                    <!-- Stats Grid -->
+                    <div class="stats-grid" id="homeStats">
+                        <div class="loading">Loading statistics...</div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="quick-actions">
+                        <h3 class="section-title">Quick Actions</h3>
+                        <div class="actions-grid">
+                            <div class="action-card" onclick="switchTab('profile')">
+                                <div class="action-icon">👤</div>
+                                <div class="action-title">Update Profile</div>
+                            </div>
+                            <div class="action-card" onclick="switchTab('attendance')">
+                                <div class="action-icon">✓</div>
+                                <div class="action-title">Check Attendance</div>
+                            </div>
+                            <div class="action-card" onclick="switchTab('documents')">
+                                <div class="action-icon">📄</div>
+                                <div class="action-title">View Documents</div>
+                            </div>
+                            <div class="action-card" onclick="switchTab('feedback')">
+                                <div class="action-icon">💬</div>
+                                <div class="action-title">Submit Feedback</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="data-table-container">
+                        <h3 class="section-title">Recent Activity</h3>
+                        <div id="recentActivityTable">
+                            <div class="loading">Loading activity...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Tab -->
+                <div class="tab-content" id="profile">
+                    <div class="profile-card" id="profileContent">
+                        <div class="loading">Loading profile...</div>
+                    </div>
+                </div>
+
+                <!-- Attendance Tab -->
+                <div class="tab-content" id="attendance">
+                    <div class="stats-grid" id="attendanceStats">
+                        <div class="loading">Loading attendance statistics...</div>
+                    </div>
+
+                    <div class="data-table-container">
+                        <h3 class="section-title">Attendance History</h3>
+                        <div id="attendanceTable">
+                            <div class="loading">Loading attendance records...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Tab -->
+                <div class="tab-content" id="performance">
+                    <div class="stats-grid" id="performanceStats">
+                        <div class="loading">Loading performance statistics...</div>
+                    </div>
+
+                    <div class="data-table-container">
+                        <h3 class="section-title">Performance Reviews</h3>
+                        <div id="performanceTable">
+                            <div class="loading">Loading reviews...</div>
+                        </div>
+                    </div>
+
+                    <div class="data-table-container">
+                        <h3 class="section-title">My Achievements</h3>
+                        <div class="actions-grid" id="achievementsGrid">
+                            <div class="loading">Loading achievements...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Documents Tab -->
+                <div class="tab-content" id="documents">
+                    <div class="data-table-container">
+                        <h3 class="section-title">My Documents</h3>
+                        <div style="margin-bottom: 1.5rem;">
+                            <button class="btn btn-primary" onclick="uploadDocument()">📤 Upload Document</button>
+                        </div>
+                        <div id="myDocumentsTable">
+                            <div class="loading">Loading documents...</div>
+                        </div>
+                    </div>
+
+                    <div class="data-table-container">
+                        <h3 class="section-title">Shared Documents</h3>
+                        <div id="sharedDocumentsTable">
+                            <div class="loading">Loading shared documents...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Tab -->
+                <div class="tab-content" id="feedback">
+                    <div class="form-container">
+                        <h3 class="section-title">Submit Feedback or Complaint</h3>
+                        <form id="feedbackForm">
+                            <div class="form-group">
+                                <label for="feedbackType">Type</label>
+                                <select id="feedbackType" required>
+                                    <option value="">Select feedback type</option>
+                                    <option value="feedback">General Feedback</option>
+                                    <option value="complaint">Complaint</option>
+                                    <option value="suggestion">Suggestion</option>
+                                    <option value="appreciation">Appreciation</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" placeholder="Brief description of your feedback" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" placeholder="Provide details about your feedback or complaint..." required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select id="category" required>
+                                    <option value="">Select a category</option>
+                                    <option value="events">Events & Activities</option>
+                                    <option value="facilities">Facilities</option>
+                                    <option value="communication">Communication</option>
+                                    <option value="services">Services</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">📤 Submit Feedback</button>
+                        </form>
+                    </div>
+
+                    <div class="data-table-container" style="margin-top: 2rem;">
+                        <h3 class="section-title">My Feedback History</h3>
+                        <div id="feedbackHistoryTable">
+                            <div class="loading">Loading feedback history...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Tab -->
+                <div class="tab-content" id="settings">
+                    <div class="form-container" id="settingsForm">
+                        <div class="loading">Loading settings...</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/Page_JS/UserDashboard.js"></script>
+</body>
+</html>
